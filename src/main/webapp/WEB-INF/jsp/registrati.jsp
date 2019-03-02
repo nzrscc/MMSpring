@@ -16,13 +16,11 @@ Registrati:
 <br><br>
 <form action="/registrazione" method="post">
     <label for="username">Username</label>
-    <input id_try="username" type="text" name="username" required="true">
+    <input id="username" type="text" name="username" required="true">
     <br><br>
     <label for="password">Password </label>
-    <input id_try="password" type="password" name="password" required="true">
+    <input id="password" type="password" name="password" required="true">
     <br><br>
-    <button type="submit" id_try= "registrati" name="registrati" value="registrati">Registrati</button>
-    <br>
-    <br>
+    <button type="submit" id= "registrati" name="registrati" value="registrati">Registrati</button>
 </form>
 </body>

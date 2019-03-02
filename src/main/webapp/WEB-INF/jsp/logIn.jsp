@@ -25,16 +25,16 @@ Autenticazione:
 <br><br>
 <form:form action="/logIn" method="post">
     <label for="username">Username</label>
-    <input id_try="username" type="text" name="username" required="true">
+    <input id="username" type="text" name="username" required="true">
     <br><br>
     <label for="password">Password </label>
-    <input id_try="password" type="password" name="password" required="true">
+    <input id="password" type="password" name="password" required="true">
     <br><br>
-    <button type="submit" id_try= "accedi" name="accedi" value="accedi">Accedi</button>
+    <button type="submit" id= "accedi" name="accedi" value="accedi">Accedi</button>
     <br>
     <br>
 </form:form>
 <form action="/registrati" method="post">
-    <button type="submit" id_try= "registrati" name="registrati" value="registrati">Registrati</button>
+    <button type="submit" id= "registrati" name="registrati" value="registrati">Registrati</button>
 </form>
 </body>

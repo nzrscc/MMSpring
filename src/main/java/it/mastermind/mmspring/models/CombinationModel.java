@@ -3,7 +3,7 @@ package it.mastermind.mmspring.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="master")
+@Table(name="combination")
 public class CombinationModel {
 
     @Id

@@ -12,13 +12,13 @@
 <body>
 <form:form action="/controllo" method="post">
     <label for="numero1">Primo numero</label>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input id_try="numero1" type="number" name="numero1" min="0" max="9" step="1" required="true">
+    <input id="numero1" type="number" name="numero1" min="0" max="9" step="1" required="true">
     <br>
     <label for="numero2">Secondo numero</label>
-    <input id_try="numero2" type="number" name="numero2" min="0" max="9" step="1" required="true">
+    <input id="numero2" type="number" name="numero2" min="0" max="9" step="1" required="true">
     <br>
     <label for="numero3">Terzo numero</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input id_try="numero3" type="number" name="numero3" min="0" max="9" step="1" required="true">
+    <input id="numero3" type="number" name="numero3" min="0" max="9" step="1" required="true">
     <br>
     <br>
     <c:choose>

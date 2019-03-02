@@ -62,7 +62,7 @@ public class HomeController {
         if(userService.existsByUsernameAndPassword(user.getUsername(), passwdCrypt))
         {
             int idCurrentUser = userService.getIdByUsername(user.getUsername());
-            MmspringApplication.getLogger().info("In existByUsernameAndPassword, user: "+user.getUsername() + "idCurrentUser: " + idCurrentUser);
+            //MmspringApplication.getLogger().info("In existByUsernameAndPassword, user: "+user.getUsername() + "\tidCurrentUser: " + idCurrentUser);
             session.setAttribute("idCurrentUser", idCurrentUser);
             session.setAttribute("username", user.getUsername());
             session.setAttribute("nTentativi", 1);
@@ -80,7 +80,7 @@ public class HomeController {
     @PostMapping("/registrati")
     public ModelAndView registrati()
     {
-        MmspringApplication.getLogger().info("Vado in registrati");
+        //MmspringApplication.getLogger().info("Vado in registrati");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("registrati");
         return modelAndView;
@@ -89,7 +89,7 @@ public class HomeController {
     @PostMapping("/registrazione")
     public ModelAndView registrazione(@ModelAttribute("currentUser") UserModel user)
     {
-        MmspringApplication.getLogger().info("Sono in registrazione");
+        //MmspringApplication.getLogger().info("Sono in registrazione");
         ModelAndView modelAndView = new ModelAndView();
         if(userService.existsByUsername(user.getUsername()))
         {

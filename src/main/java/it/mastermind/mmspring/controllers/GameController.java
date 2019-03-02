@@ -1,17 +1,13 @@
 package it.mastermind.mmspring.controllers;
 
-import it.mastermind.mmspring.MmspringApplication;
-import it.mastermind.mmspring.models.TryModel;
 import it.mastermind.mmspring.services.CombinationService;
 import it.mastermind.mmspring.services.TryService;
 import it.mastermind.mmspring.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 
@@ -42,6 +38,7 @@ public class GameController {
             session.setAttribute("idCombination", combinationService.save(username));
         }
         String soluzione=combinationService.getSoluzioneByUsername(username);
+        session.setAttribute("soluzione", soluzione);
         //MmspringApplication.getLogger().info("Soluzione: "+soluzione);
         String[] items = soluzione.replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
         soluzioneV = new int[items.length];
@@ -61,7 +58,14 @@ public class GameController {
         numTentativi=numTentativi+1;
         //MmspringApplication.getLogger().info("Dopo il +1, numTentativi: " + numTentativi);
         session.setAttribute("nTentativi", numTentativi);
-        modelAndView.setViewName("game");
+        if(numTentativi<6)
+        {
+            modelAndView.setViewName("game");
+        }else
+        {
+            session.setAttribute("classificaTry",tryService.getTryById_combination((Integer) session.getAttribute("idCombination")));
+            modelAndView.setViewName("risultato");
+        }
         return modelAndView;
     }
 

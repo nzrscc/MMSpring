@@ -8,14 +8,14 @@ public class TryModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_try")
-    private int id_try;
+    @Column(name = "id")
+    private int id;
 
     @Column(name = "id_user")
     private int id_user;
 
-    @Column(name = "id_master")
-    private int id_master;
+    @Column(name = "idCombination")
+    private int idCombination;
 
     @Column(name = "n_tentativi")
     private int n_tentativi;
@@ -32,20 +32,20 @@ public class TryModel {
     @Column(name = "data_operazione")
     private String dataOperazione;
 
-    public int getId_master() {
-        return id_master;
+    public int getIdCombination() {
+        return idCombination;
     }
 
-    public void setId_master(int id_master) {
-        this.id_master = id_master;
+    public void setIdCombination(int idCombination) {
+        this.idCombination = idCombination;
     }
 
     public TryModel() {
     }
 
-    public TryModel(int id_user, int id_master, int n_tentativi, int pos_esatta, int num_esatto, String valori_inseriti, String dataOperazione) {
+    public TryModel(int id_user, int idCombination, int n_tentativi, int pos_esatta, int num_esatto, String valori_inseriti, String dataOperazione) {
         this.id_user = id_user;
-        this.id_master = id_master;
+        this.idCombination = idCombination;
         this.n_tentativi = n_tentativi;
         this.pos_esatta = pos_esatta;
         this.num_esatto = num_esatto;
@@ -53,12 +53,12 @@ public class TryModel {
         this.dataOperazione = dataOperazione;
     }
 
-    public int getId_try() {
-        return id_try;
+    public int getId() {
+        return id;
     }
 
-    public void setId_try(int id_try) {
-        this.id_try = id_try;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getId_user() {
@@ -112,9 +112,9 @@ public class TryModel {
     @Override
     public String toString() {
         return "TryModel{" +
-                "id_try=" + id_try +
+                "id=" + id +
                 ", id_user=" + id_user +
-                ", id_master=" + id_master +
+                ", idCombination=" + idCombination +
                 ", n_tentativi=" + n_tentativi +
                 ", pos_esatta=" + pos_esatta +
                 ", num_esatto=" + num_esatto +

@@ -48,8 +48,6 @@ public class CombinationServiceImpl implements CombinationService {
     @Override
     public String getSoluzioneByUsername(String username)
     {
-        //System.out.println("Sono in combserimpl in getsoluzioebyusername");
-        //System.out.println("username thecomb= "+ theCombinationRepository.getCombinationByUsername(username).toString());
         List<CombinationModel> lista=theCombinationRepository.getCombinationByUsername(username);
         int j=0, indice=0;
         for(int i=0; i<lista.size();i++)
