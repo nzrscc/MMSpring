@@ -5,6 +5,7 @@ import it.mastermind.mmspring.services.TryService;
 import it.mastermind.mmspring.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -58,15 +59,28 @@ public class GameController {
         numTentativi=numTentativi+1;
         //MmspringApplication.getLogger().info("Dopo il +1, numTentativi: " + numTentativi);
         session.setAttribute("nTentativi", numTentativi);
+        if(numTentativi>1)
+        {
+            session.setAttribute("start", 1);
+            session.setAttribute("classificaTry",tryService.getTryById_combination((Integer) session.getAttribute("idCombination")));
+        }
         if(numTentativi<6)
         {
             modelAndView.setViewName("game");
         }else
         {
-            session.setAttribute("classificaTry",tryService.getTryById_combination((Integer) session.getAttribute("idCombination")));
             modelAndView.setViewName("risultato");
         }
         return modelAndView;
+    }
+
+    @GetMapping ("/risultato")
+    public ModelAndView getClassificaRisultato(HttpSession session)
+    {
+        session.setAttribute("classificaTry",tryService.getTryById_combination((Integer) session.getAttribute("idCombination")));
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("risultato");
+        return  modelAndView;
     }
 
 

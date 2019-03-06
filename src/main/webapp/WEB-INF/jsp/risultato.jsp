@@ -11,25 +11,18 @@
     </p>
 </head>
 <body>
-    <%List<TryModel> list = (List<TryModel>) request.getSession().getAttribute("classificaTry");%>
+    <% List<TryModel> list = (List<TryModel>) request.getSession().getAttribute("classificaTry"); %>
 <br><br>
-<% int i = 0;%>
-<table> <!? Inizia la tabella ?>
+<% int i;%>
+<table>
     <table border=?1?>
-        <tr> <!? Inizia la prima riga ?>
+        <tr>
             <td>Numero tentativo</td>
-            <!? Prima colonna ?>
             <td>Numeri inseriti</td>
-            <!? Seconda colonna ?>
             <td>Numeri giusti in posizione esatta</td>
-            <!? Terza colonna ?>
             <td>Numeri giusti in posizione errata</td>
-            <!? Quarta colonna ?>
         </tr>
-        <!? Fine della prima riga ?>
-        <%
-            for (i = 0; i < list.size(); i++) {
-        %>
+        <% for (i = 0; i < list.size(); i++) { %>
         <tr>
             <td><%out.println(list.get(i).getN_tentativi()); %></td>
             <td><%out.println(list.get(i).getValori_inseriti()); %></td>
@@ -38,7 +31,7 @@
         </tr>
         <% } %>
     </table>
-    <!? Fine della tabella ?>
+
 </table>
     <br><br>
     <form action="/" method="post">

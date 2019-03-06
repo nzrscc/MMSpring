@@ -1,6 +1,5 @@
 package it.mastermind.mmspring.controllers;
 
-import it.mastermind.mmspring.MmspringApplication;
 import it.mastermind.mmspring.models.UserModel;
 import it.mastermind.mmspring.services.UserService;
 import org.mindrot.jbcrypt.BCrypt;
@@ -14,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.security.NoSuchAlgorithmException;
+import java.util.Enumeration;
 
 
 @Controller
@@ -25,7 +25,17 @@ public class HomeController {
     public HomeController()  {    }
 
     @RequestMapping("/")
-    public String home()  {
+    public String home(HttpSession session)  {
+
+//        session.removeAttribute("nTentativi");
+//        session.removeAttribute("soluzione");
+//        session.removeAttribute("idCombination");
+//        session.removeAttribute("start");
+//        session.removeAttribute("idCurrentUser");
+//        session.removeAttribute("nTentativo");
+//        session.removeAttribute("classificaTry");
+//        session.removeAttribute("username");
+
         return "home";
     }
 
@@ -39,9 +49,8 @@ public class HomeController {
             //setta classifica user
         }else if(scelta.equals("Classifica Tentativi")) {
             //setta classifica tentativi
-        }else   {
-            //ripeti il tutto
         }
+
         return modelAndView;
     }
 
@@ -49,8 +58,15 @@ public class HomeController {
     @PostMapping("/logIn")
     public ModelAndView logIn(@ModelAttribute("currentUser") UserModel user, HttpSession session)
     {
-        //MmspringApplication.getLogger().info("metodo logIn chiamato");
-        //MmspringApplication.getLogger().info("Username: "+user.getUsername()+"\tPasswd: "+user.getPassword());
+//        Enumeration e = session.getAttributeNames();
+//        while ( e.hasMoreElements() ){
+//            String key = (String)e.nextElement();
+//            MmspringApplication.getLogger().info( key + " = " + session.getAttribute( key ) + " <br>" );
+//        }
+//
+//        MmspringApplication.getLogger().info("metodo logIn chiamato");
+//        MmspringApplication.getLogger().info("Username: "+user.getUsername()+"\tPasswd: "+user.getPassword());
+
         ModelAndView modelAndView = new ModelAndView();
         String passwdCrypt="";
         try{
@@ -65,6 +81,8 @@ public class HomeController {
             //MmspringApplication.getLogger().info("In existByUsernameAndPassword, user: "+user.getUsername() + "\tidCurrentUser: " + idCurrentUser);
             session.setAttribute("idCurrentUser", idCurrentUser);
             session.setAttribute("username", user.getUsername());
+//            modelAndView.addObject("nTentativi", 1);
+//            modelAndView.addObject("nTentativo", 5);
             session.setAttribute("nTentativi", 1);
             session.setAttribute("nTentativo", 5);
             modelAndView.setViewName("game");

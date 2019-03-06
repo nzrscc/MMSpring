@@ -1,1 +1,4 @@
 VEDERE E CREARE LE TABELLE CON FOREIGN KEY
+
+NON SALVARE NULLA NELLA SESSIONE (utilizza i beans)(utilliza i modelAndView per passare i dati passo passo)(rimane solo l'id del currentUser)
+
